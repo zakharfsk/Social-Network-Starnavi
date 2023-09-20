@@ -61,17 +61,24 @@ docker compose up -d
 python manage.py migrate
 ```
 
-7. Run server
+7. Create superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+8. Run server
 
 ```bash
 python manage.py runserver
 ```
 
-8. Run script bot
+9. Run script bot(API must be running)
 
 ```bash
 python run_bot.py
 ```
+
 
 ### API Documentation
 To view the documentation, you need to go to the address: http://localhost:8000/api/docs/
