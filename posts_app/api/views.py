@@ -5,12 +5,11 @@ from django.shortcuts import get_object_or_404
 from django.utils.timezone import make_aware
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import generics, views, status
+from rest_framework import generics, status, views
 from rest_framework.response import Response
 
-from .serializers import CreatePostSerializer, PostLikesAnalyticsSerializer
 from ..models import Post
-
+from .serializers import CreatePostSerializer, PostLikesAnalyticsSerializer
 
 param_date_from = openapi.Parameter(
     'date_from',
@@ -96,8 +95,6 @@ class PostLikesAnalytics(views.APIView):
             .annotate(likes_count=Count('likes'))
             .order_by('created_at__date')
         )
-
-        print(analytics_data)
 
         serializer = PostLikesAnalyticsSerializer(analytics_data, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
