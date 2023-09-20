@@ -1,0 +1,5 @@
+exclude = ['migrations']
+line-length = 120
+
+[flake8-errmsg]
+max-string-length = 12
